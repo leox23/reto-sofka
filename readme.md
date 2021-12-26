@@ -1,5 +1,4 @@
-```
-# 	PreguntonApp⁉️
+# PreguntonApp⁉️
 Esta es mi repuesta al Challenge - Concurso de preguntas y respuestas.
 Las herramientas usadas fueron:
 - Html, Css, Javascript.
@@ -14,5 +13,3 @@ La base de datos es gestionada por el navegador a través de la [API IndexedDB](
 
 Bugs existentes:
 ... Esperando feedback ...
-```
-
