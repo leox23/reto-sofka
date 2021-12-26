@@ -201,7 +201,7 @@ const allContentQA = [level1, level2, level3, level4, level5]
 const pointsPerRound = [2,4,6,8,10]
 const radios = document.getElementsByClassName("form-check-input")
 
-var round = 0; level = "";checkPosition = 0; points = 0; namePlayer = ""; readScores = []; paperHighScores = "";
+var round = 0; level = ""; checkPosition = undefined; points = 0; namePlayer = ""; readScores = []; paperHighScores = "";
 
 //
 // Declare Database
