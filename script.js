@@ -27,18 +27,15 @@ function ask(answer = 0){
 			} else {
 				alert("❌❌❌❌❌❌❌Respuesta incorrecta❌❌❌❌❌❌❌\n                      💢Acabas de perder todo tu puntaje💢")
 				round = 0; level = "";checkPosition = 0; points = 0;
-				window.location.href = "main.html"
+				window.location.href = "index.html"
 			}
 		}
 		if (round == 5){
 			document.getElementById("points").innerHTML = points + " pts ⭐"
-
 			namePlayer = prompt("Has respondido la ultima pregunta! Tu puntaje fue de " + points + " pts!\nDanos tu nombre y te registraremos en los puntaje maximos!")
-
 			writeDB(namePlayer,points)
 		}
 	}
-
 		//redondear abajo, numero random del 1 al 5
 	question = Math.floor(Math.random() * 4)
     correctAnswer = allContentQA[round][question][1]
@@ -48,7 +45,6 @@ function ask(answer = 0){
 			      allContentQA[round][question][3],
 			      allContentQA[round][question][4]
     			 ]
-
     //sort answers
     allAnswers.sort(function() { return Math.random() - 0.5 });
     correctAnsIndex = allAnswers.indexOf(correctAnswer)
@@ -61,7 +57,7 @@ function retreat(){
 		ok = confirm("Aun no tienes puntos y ¡esta pregunta esta facil!, ¿quieres intentar responder?")
 		if( ok == false )
 		{
-			window.location.href = "main.html"
+			window.location.href = "index.html"
 		}
 		return
 	}
@@ -76,7 +72,6 @@ function retreat(){
 			game.html to highScores.html
 ######################################################################
 */
-
 function goToHighScores(){
 	ok = confirm("Hey " + namePlayer +"! ¿Quieres ver los puntajes maximos?")
 
@@ -86,7 +81,7 @@ function goToHighScores(){
 	}
 	else
 	{
-		window.location.href = "main.html"
+		window.location.href = "index.html"
 	}
 }
 
@@ -100,7 +95,6 @@ function writeGameInterface(){
 	document.getElementById("points").innerHTML = points + " pts ⭐"
 	//Question
 	document.getElementById("question").innerHTML = allContentQA[round][question][0]
-
 	//Round and value of points
 	switch(round){
 		case 0:
@@ -120,7 +114,6 @@ function writeGameInterface(){
 			break
 	}
 	document.getElementById("round").innerHTML = "📑 Nivel actual: <b>" + level + "</b>.   |   Ganaras <b>" + pointsPerRound[round] + " pts</b> ⭐ en este round <b>(" + (round + 1) + ")</b>."
-
 	//Checking selected answers
 	var radioAnswers = document.querySelectorAll(".form-check-label")
 	for (var i = 0; i < radioAnswers.length; i++) {
@@ -128,16 +121,11 @@ function writeGameInterface(){
 	}
 }
 
-
-
-
-
 /*
 ######################################################################
 						Adding data to Database
 ######################################################################
 */
-
 function writeDB(namePlayer,points){
 db.open();
 db.highScores.add({namePlayer: namePlayer, points: points})
@@ -147,8 +135,6 @@ sleep(1000).then(() => {
     goToHighScores()
 });
 }
-
-
 
 /*
 ######################################################################
@@ -160,7 +146,6 @@ db.open();
 db.highScores
   .where('points').above(0).reverse()
   .toArray(function (temps){
-
     for (var i = 0;i < temps.length; i++){
     	//escribiendo fila a fila la tabla
 		document.getElementById("contentScores").innerHTML += `
@@ -170,7 +155,6 @@ db.highScores
 		      <td>${temps[i].points} ⭐</td>
 		      <td>${temps[i].id}</td>
 		</tr>`
-
     }
   });
 }
